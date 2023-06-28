@@ -1,0 +1,40 @@
+{% block contenido%} 
+
+<form enctype="multipart/form-data" method="post">
+  {% comment %} llave que le dice a jango que ese formulario le pertenece a la aplicacion {% endcomment %}
+  {%csrf_token%}
+  {% comment %} formulario que nos envian desde la vista {% endcomment %}
+
+
+  {% for campo in formulario %}
+
+
+    <div class="mb-3">
+      {% comment %} le decimos que el campo se va a llamar en base al label osea el verbose que indicamos  {% endcomment %}
+      <label for="" class="form-label">{{campo.label}}</label>
+
+      <input 
+      {% comment %} obtenemos los tipos de datos o campos que vienen de formulario {% endcomment %}
+      type="{{ campo.field.widget.input_type }}"
+        class="form-control"
+        {% comment %} nombre del campo {% endcomment %}
+         name="{{campo.name}}"
+         id="" 
+         aria-describedby="helpId" 
+         placeholder="{{campo.label}}"
+         {% comment %} le decimos que el campo va a ser igual al value y que si no hay informacion lo muestre vacio {% endcomment %}
+         value="{{campo.value | default:''}}">
+    </div>
+    {% comment %} imprimimos errores,todos los campos deben ser llenados  {% endcomment %}
+    <div class="col-12 help-text">{{campo.errors}} </div> 
+
+    {% endfor %}
+
+    <input name="" id="" class="btn btn-success" type="submit" value="Enviar Informacion">
+    <input name="" id="" class="btn btn-primary" type="submit" value="Cancelar">
+    
+</form>
+
+
+{%endblock%}
+

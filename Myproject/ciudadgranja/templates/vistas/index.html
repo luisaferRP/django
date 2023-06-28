@@ -1,0 +1,58 @@
+{% extends "base.html"%}
+
+{% block titulo%} Productos {% endblock%}
+
+{%block contenido%}
+<div class="card">
+    <div class="card-header">
+
+    <a name="" id="" class="btn btn-success" href="{% url 'crear'%}" role="button">Nuevo producto</a>
+    </div>
+
+    <div class="card-body">
+        <h4 class="card-title">Productos</h4>
+
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre Producto</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Valor Producto</th>
+                        <th scope="col">Fecha de ingreso</th>
+                        <th scope="col">Acciones</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    {% comment %} le decimos que de productos coga productos y luego los llamamos con su respectivo modelo {% endcomment %}
+                    {% for productos in productos %}
+                    <tr class="">
+                        {% comment %} para administrar la informacio {% endcomment %}
+                        <td>{{productos.id}}</td>
+                        <td>{{productos.nombre}}</td>
+                        <td>{{productos.descripcion}}</td>
+                        <td>{{productos.valor_producto}}</td>
+                        <td>{{productos.fecha_ingreso}}</td>
+                        <td>
+                            <!-- botones para editar y borrar -->
+             {% comment %} le decimos que queremos editar o eliminar dependiendo de que en este seleccionamos caso el id {% endcomment %}
+                            <a name="" id="" class="btn btn-primary" href="{%url 'editar' productos.id%}" role="button">Editar</a> 
+                            <a name="" id="" class="btn btn-danger" href="{%url 'eliminar' productos.id %}" role="button">Borrar</a>
+                        </td>
+        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+       
+
+
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+</div>
+{%endblock%}
