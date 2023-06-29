@@ -6,4 +6,5 @@ from .models import productos
 class productosForm(forms.ModelForm):
     class Meta:
         model=productos
+        # usar todos los campos
         fields='__all__'

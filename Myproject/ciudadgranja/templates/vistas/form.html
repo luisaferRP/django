@@ -3,15 +3,21 @@
 <form enctype="multipart/form-data" method="post">
   {% comment %} llave que le dice a jango que ese formulario le pertenece a la aplicacion {% endcomment %}
   {%csrf_token%}
+
   {% comment %} formulario que nos envian desde la vista {% endcomment %}
-
-
   {% for campo in formulario %}
 
 
     <div class="mb-3">
       {% comment %} le decimos que el campo se va a llamar en base al label osea el verbose que indicamos  {% endcomment %}
       <label for="" class="form-label">{{campo.label}}</label>
+
+      {% comment %}Preguntamos si hay un valor y ese valor es un archivo (file) lo mostramos en una imagen{% endcomment %}
+      {% if campo.field.widget.input_type == 'file' and campo.value %}
+      <br>
+{% comment %} llamando al src como la media url,la carpeta donde se guardan las imagenes y el campo {% endcomment %}
+      <img src="{{MEDIA_URL}}/imagenes/{{campo.value}}" width="150"/>
+      {% endif %}
 
       <input 
       {% comment %} obtenemos los tipos de datos o campos que vienen de formulario {% endcomment %}
@@ -31,7 +37,8 @@
     {% endfor %}
 
     <input name="" id="" class="btn btn-success" type="submit" value="Enviar Informacion">
-    <input name="" id="" class="btn btn-primary" type="submit" value="Cancelar">
+    
+    <a name="" id="" class="btn btn-primary" href="{%url 'index' %}" role="button">Cancelar</a>
     
 </form>
 

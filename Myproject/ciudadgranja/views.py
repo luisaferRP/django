@@ -39,10 +39,11 @@ def form(request):
 
 def index(request):
     index= productos.objects.all()
+    # a productos le enviamos lo obtenido en la variable index
     return render (request,'vistas/index.html',{'productos': index})
 
 def eliminar(request,id):
-    eliminar= productos.objects.get(id=id)
-    eliminar.delete()
+    producto = productos.objects.get(id=id)
+    producto.delete()
     return redirect('index')
     

@@ -19,6 +19,7 @@
                         <th scope="col">ID</th>
                         <th scope="col">Nombre Producto</th>
                         <th scope="col">Descripcion</th>
+                        <th scope="col">Imagen</th>
                         <th scope="col">Valor Producto</th>
                         <th scope="col">Fecha de ingreso</th>
                         <th scope="col">Acciones</th>
@@ -26,24 +27,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% comment %} le decimos que de productos coga productos y luego los llamamos con su respectivo modelo {% endcomment %}
+{% comment %} le decimos que de productos coga productos y luego los llamamos con su respectivo modelo {% endcomment %}
+{% comment %} ciclo creado desde la variable index en la view donde leemos el producto y lo guardamos en una variable llamada productos {% endcomment %}
                     {% for productos in productos %}
                     <tr class="">
                         {% comment %} para administrar la informacio {% endcomment %}
                         <td>{{productos.id}}</td>
                         <td>{{productos.nombre}}</td>
                         <td>{{productos.descripcion}}</td>
+                        {% comment %} hacemos las adecuaciones de nuestra imagen ya que si la llamamos y ponemos solo url django no nos dejara verla porque proteje las url {% endcomment %}
+                        <td><img src="{{productos.imagen}}" height="100"/></td>
                         <td>{{productos.valor_producto}}</td>
                         <td>{{productos.fecha_ingreso}}</td>
                         <td>
                             <!-- botones para editar y borrar -->
              {% comment %} le decimos que queremos editar o eliminar dependiendo de que en este seleccionamos caso el id {% endcomment %}
                             <a name="" id="" class="btn btn-primary" href="{%url 'editar' productos.id%}" role="button">Editar</a> 
-                            <a name="" id="" class="btn btn-danger" href="{%url 'eliminar' productos.id %}" role="button">Borrar</a>
+                            <a name="" id="" class="btn btn-danger" href="{%url 'eliminar' productos.id%}" role="button">Borrar</a>
                         </td>
-        
+            
                     </tr>
                     {% endfor %}
+                   
                 </tbody>
             </table>
         </div>
