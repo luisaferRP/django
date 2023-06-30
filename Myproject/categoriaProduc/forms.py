@@ -1,11 +1,10 @@
 from django import forms
-from .models import productos
+from .models import categorias
 
 # creando lectura y mapeado de nuestro modelo apartir de la declaracion de el formulario
 
-class productosForm(forms.ModelForm):
+class categoriasForm(forms.ModelForm):
     class Meta:
-        model=productos
+        model=categorias
         # usar todos los campos
         fields='__all__'
-        

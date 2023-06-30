@@ -18,11 +18,14 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include,re_path
 from ciudadgranja import views
+from categoriaProduc import urls
+from categoriaProduc import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # re_path(r'^$',views.home,name='home'),
     re_path('',include('ciudadgranja.urls')),
-
+    re_path('',include('categoriaProduc.urls')),
+    
 
 ]

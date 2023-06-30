@@ -23,6 +23,7 @@
                         <th scope="col">Valor Producto</th>
                         <th scope="col">Fecha de ingreso</th>
                         <th scope="col">Acciones</th>
+                        <th scope="col">Categoria</th>
                        
                     </tr>
                 </thead>
@@ -45,6 +46,8 @@
                             <a name="" id="" class="btn btn-primary" href="{%url 'editar' productos.id%}" role="button">Editar</a> 
                             <a name="" id="" class="btn btn-danger" href="{%url 'eliminar' productos.id%}" role="button">Borrar</a>
                         </td>
+                        <td>{{productos.categorias}}</td>
+
             
                     </tr>
                     {% endfor %}

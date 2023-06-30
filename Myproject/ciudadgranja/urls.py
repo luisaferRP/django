@@ -11,7 +11,7 @@ from django.conf.urls.static import static
 #Ingresamos a las vistas creadas
 urlpatterns = [
     path(r'',views.inicio,name='inicio'),
-    path(r'categorias',views.categoria,name='categoria'),
+    # path(r'categoria',views.categoria,name='categoria'),
     path(r'editar',views.editar,name='editar'),
     path(r'crear',views.crear,name='crear'),
     path(r'form',views.form,name='form'),

@@ -10,8 +10,9 @@ from .forms import productosForm
 def inicio(request):
     return render(request,'inicio.html')
 
-def categoria(request):
-    return render(request,'categoria.html')
+# def categoria(request):
+#     return render(request,'categoria.html')
+    
 
 def crear(request):
     # preguntamos si lo de el formulario es valido y hacemos un redicionamiento

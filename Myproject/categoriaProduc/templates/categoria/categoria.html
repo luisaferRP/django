@@ -1,0 +1,53 @@
+{% extends "base.html"%}
+
+{% block titulo%} Categorias Productos {% endblock%}
+
+{%block contenido%}
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-success" href="{%url 'categoria_crear'%}" role="button">Añadir Categorias</a>
+
+    {% comment %} <a name="" id="" class="btn btn-success" href="{%url 'crearcate.html'%}" role="button">Añadir Categorias</a> {% endcomment %}
+    </div>
+
+    <div class="card-body">
+        <h4 class="card-title">Categorias de Productos</h4>
+
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Acciones</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+{% comment %} le decimos que de productos coga productos y luego los llamamos con su respectivo modelo {% endcomment %}
+{% comment %} ciclo creado desde la variable index en la view donde leemos el producto y lo guardamos en una variable llamada productos {% endcomment %}
+                    {% for categorias in categorias %}
+                    <tr class="">
+                        <td>{{categorias.nombre_categoria}}</td>
+                        <td>
+                            <!-- botones para editar y borrar -->
+             {% comment %} le decimos que queremos editar o eliminar dependiendo de que en este seleccionamos caso el id {% endcomment %}
+                            <a name="" id="" class="btn btn-primary" href="{%url 'categoria_editar' categorias.id%}" role="button">Editar</a> 
+                            <a name="" id="" class="btn btn-danger" href="{%url 'eliminar' categorias.id%}" role="button">Borrar</a>
+                        </td>
+
+            
+                    </tr>
+                    {% endfor %}
+                   
+                </tbody>
+            </table>
+        </div>
+        
+       
+
+
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+</div>
+{%endblock%}

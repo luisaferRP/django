@@ -1,7 +1,7 @@
 from typing import Any, Dict, Tuple
 from django.db import models
 from django.core.files.storage import default_storage
-# from categoriaProduc.models import categorias
+from categoriaProduc.models import categorias
 
 # Create your models here.
 class productos(models.Model):
@@ -13,7 +13,7 @@ class productos(models.Model):
     valor_producto=models.CharField(max_length=100, verbose_name='Valor')
     #le indico que el campo se llene automáticamente con la fecha y hora actual cuando se cree un nuevo producto.
     fecha_ingreso=models.DateTimeField(auto_now_add=True)
-    # categorias=models.ForeingKey(categorias,null=True,blanck=True,on_dele=models.CASCADE)
+    categorias=models.OneToOneField(categorias,null=True,blank=True,on_delete=models.CASCADE)
 
     def _str_(self):
         fila = "Nombre:" + self.nombre + "-" + "Descripcion:" + self.descripcion
